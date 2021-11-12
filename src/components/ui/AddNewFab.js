@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { uiOpenModal } from '../../actions/ui';
+import { eventCleanActive } from '../../actions/events';
 
 export const AddNewFab = () => {
 
@@ -8,6 +9,7 @@ export const AddNewFab = () => {
 
     const handleClickNew = () => {
         dispatch( uiOpenModal() )
+        dispatch( eventCleanActive() );
     }
 
     return (
