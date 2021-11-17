@@ -1,5 +1,4 @@
-// const baseUrl = process.env.REACT_APP_API_URL;
-const baseUrl = 'https://calendar-react-nico.herokuapp.com';
+const baseUrl = process.env.REACT_APP_API_URL;
 
 export const fetchWithoutToken = ( endpoint, data, method = 'GET' ) => {
 
