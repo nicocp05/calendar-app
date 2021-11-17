@@ -6,7 +6,7 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventCleanActive, eventUpdated } from '../../actions/events';
+import { eventStartAddNew, eventCleanActive, eventStartUpdate } from '../../actions/events';
 
 const customStyles = {
   content: {
@@ -21,7 +21,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const now = moment().min(0).seconds(0).add(1, 'hours');
+const now = moment().minutes(0).seconds(0).add(1, 'hours');
 const nowPlus = now.clone().add(1, 'hours');
 
 const initEvent = {
@@ -29,11 +29,7 @@ const initEvent = {
     title:'',
     notes: '',
     start: now.toDate(),
-    end: nowPlus.toDate(),
-    user: {
-        id: '1',
-        name: 'Nico'
-    }
+    end: nowPlus.toDate()
 }
 
 export const CalendarModal = () => {
@@ -99,12 +95,9 @@ export const CalendarModal = () => {
         }
 
         if( activeEvent ) {
-            dispatch( eventUpdated( formValues ) );
+            dispatch( eventStartUpdate( formValues ) );
         } else {
-            dispatch( eventAddNew({
-                ...formValues,
-                id: new Date().getTime()  
-            }) );
+            dispatch( eventStartAddNew( formValues ) );
         }
 
 
